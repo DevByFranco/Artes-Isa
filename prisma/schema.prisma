@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+model User {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  password String
+  role     String @default("ADMIN")
+}
+
+model Product {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  stock       Int       @default(1)
+  images      String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  layaways    Layaway[]
+}
+
+model Customer {
+  id        String    @id @default(cuid())
+  name      String
+  phone     String    @unique
+  email     String?
+  createdAt DateTime  @default(now())
+  layaways  Layaway[]
+}
+
+model Layaway {
+  id          String    @id @default(cuid())
+  customerId  String
+  customer    Customer  @relation(fields: [customerId], references: [id])
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id])
+  totalPrice  Float
+  status      String    @default("ACTIVE")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  payments    Payment[]
+}
+
+model Payment {
+  id          String   @id @default(cuid())
+  layawayId   String
+  layaway     Layaway  @relation(fields: [layawayId], references: [id], onDelete: Cascade)
+  amount      Float
+  method      String   @default("CASH")
+  createdAt   DateTime @default(now())
+}
