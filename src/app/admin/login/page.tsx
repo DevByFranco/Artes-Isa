@@ -1,48 +1,66 @@
-import { signIn } from "@/auth";
+"use client";
+
+import { useActionState } from "react";
+import { authenticate } from "./actions";
 
 export default function LoginPage() {
+  // useActionState maneja el estado de la función de servidor (errores y carga)
+  const [errorMessage, formAction, isPending] = useActionState(
+    authenticate,
+    undefined
+  );
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md">
-        <h2 className="text-center text-2xl font-bold text-gray-900">
+    <div className="min-h-screen flex items-center justify-center bg-isa-cream">
+      <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 w-full max-w-md">
+        
+        <h1 className="text-2xl font-bold text-center mb-6 text-isa-dark">
           Administración Artes Isa
-        </h2>
-        <form
-          action={async (formData) => {
-            "use server";
-            await signIn("credentials", formData);
-          }}
-          className="space-y-4"
-        >
+        </h1>
+        
+        <form action={formAction} className="flex flex-col gap-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Correo Electrónico
             </label>
-            <input
-              type="email"
+            <input 
+              type="email" 
               name="email"
               required
-              className="mt-1 w-full rounded-md border px-3 py-2 text-black"
+              className="w-full border border-gray-300 rounded-md p-2.5 outline-none focus:ring-2 focus:ring-isa-gold focus:border-transparent transition-all"
+              placeholder="admin@artesisa.com"
             />
           </div>
+          
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Contraseña
             </label>
-            <input
-              type="password"
+            <input 
+              type="password" 
               name="password"
               required
-              className="mt-1 w-full rounded-md border px-3 py-2 text-black"
+              className="w-full border border-gray-300 rounded-md p-2.5 outline-none focus:ring-2 focus:ring-isa-gold focus:border-transparent transition-all"
+              placeholder="••••••••"
             />
           </div>
-          <button
-            type="submit"
-            className="w-full rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800"
+
+          {/* Mostrar mensaje de error si las credenciales son incorrectas */}
+          {errorMessage && (
+            <p className="text-sm text-red-500 font-medium text-center">
+              {errorMessage}
+            </p>
+          )}
+          
+          <button 
+            type="submit" 
+            disabled={isPending}
+            className="w-full bg-isa-dark text-white font-medium py-2.5 rounded-md hover:bg-black transition-colors mt-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
-            Iniciar Sesión
+            {isPending ? "Iniciando sesión..." : "Iniciar Sesión"}
           </button>
         </form>
+
       </div>
     </div>
   );
