@@ -53,7 +53,7 @@ export default function PublicProductCard({ product }: { product: Product }) {
             disabled={product.stock <= 0}
             className="px-4 py-2 bg-[#8A9A86] text-white text-sm font-medium rounded-lg hover:bg-[#748371] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
-            {product.stock > 0 ? "Al Carrito" : "Agotado"}
+            {product.stock > 0 ? "Añadir" : "Agotado"}
           </button>
         </div>
       </div>
