@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { signOut } from "@/auth";
 
 export default function DashboardLayout({
@@ -11,9 +12,20 @@ export default function DashboardLayout({
       
       {/* Barra Lateral (Sidebar) */}
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col shadow-sm">
-        <div className="p-6 border-b border-gray-100">
-          <h2 className="text-2xl font-bold text-isa-dark">Artes Isa</h2>
-          <p className="text-sm text-gray-500">Panel de Control</p>
+        
+        {/* Encabezado con Logo */}
+        <div className="flex items-center gap-3 p-6 border-b border-gray-100">
+          <Image 
+            src="/logo.png" 
+            alt="Logo Artes Isa" 
+            width={100}
+            height={100}
+            className="w-16 h-16 object-contain rounded-md" 
+          />
+          <div>
+            <h2 className="text-xl font-bold text-isa-dark leading-none">Artes Isa</h2>
+            <p className="text-xs text-gray-500 mt-1">Panel de Control</p>
+          </div>
         </div>
         
         <nav className="flex-1 flex flex-col gap-2 p-4">
@@ -30,9 +42,13 @@ export default function DashboardLayout({
             Usuarios
           </Link>
         </nav>
+      </aside>
+
+      {/* Contenedor Principal (Top Bar + Contenido) */}
+      <div className="flex-1 flex flex-col h-screen overflow-hidden">
         
-        <div className="p-4 border-t border-gray-200">
-          {/* Aquí envolvemos el botón en el formulario de Server Action */}
+        {/* BARRA SUPERIOR (Top Bar) */}
+        <header className="bg-white border-b border-gray-100 h-16 flex items-center justify-end px-8 shadow-sm shrink-0">
           <form 
             action={async () => {
               "use server";
@@ -41,18 +57,21 @@ export default function DashboardLayout({
           >
             <button 
               type="submit" 
-              className="w-full text-left p-2.5 hover:bg-red-50 text-red-600 font-medium rounded-md transition-colors"
+              className="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 bg-red-50 px-4 py-2 rounded-lg transition-colors"
             >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
               Cerrar Sesión
             </button>
           </form>
-        </div>
-      </aside>
+        </header>
 
-      {/* Contenido Principal (Lo que cambia al navegar) */}
-      <main className="flex-1 p-8 overflow-y-auto">
-        {children}
-      </main>
+        {/* Contenido de la página */}
+        <main className="flex-1 p-8 overflow-y-auto bg-isa-cream/30">
+          {children}
+        </main>
+      </div>
       
     </div>
   );
