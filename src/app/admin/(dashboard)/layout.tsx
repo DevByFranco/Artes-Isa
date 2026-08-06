@@ -16,7 +16,7 @@ export default function DashboardLayout({
         {/* Encabezado con Logo */}
         <div className="flex items-center gap-3 p-6 border-b border-gray-100">
           <Image 
-            src="/logo.png" 
+            src="/Logo.png" 
             alt="Logo Artes Isa" 
             width={100}
             height={100}
