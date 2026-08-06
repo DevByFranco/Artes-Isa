@@ -30,7 +30,8 @@ export default async function HomePage() {
       </section>
 
       {/* 2. SECCIÓN COMPRAR POR CATEGORÍAS */}
-      <section className="py-16 px-6 max-w-7xl mx-auto">
+      {/* AÑADIDO: id="categorias" y scroll-mt-24 para que el ancla funcione sin ser tapada por el Navbar */}
+      <section id="categorias" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24">
         <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Comprar por Categorías</h2>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
@@ -57,8 +58,11 @@ export default async function HomePage() {
       </section>
 
       {/* 3. SECCIÓN DEL CATÁLOGO (Usando tu PublicProductCard) */}
-      <section id="catalogo" className="max-w-7xl mx-auto px-6 py-16">
-        <div className="flex justify-between items-end mb-10 border-b border-gray-100 pb-4">
+      {/* AÑADIDO: scroll-mt-24 para el ancla del catálogo */}
+      <section id="catalogo" className="max-w-7xl mx-auto px-6 py-16 scroll-mt-24">
+        
+        {/* AÑADIDO: flex-col sm:flex-row para que en celulares se acomode uno debajo del otro */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mb-10 border-b border-gray-100 pb-4">
           <h2 className="text-3xl font-semibold text-gray-800">Nuestro Catálogo</h2>
           <span className="text-gray-500 text-sm font-medium">{products.length} productos disponibles</span>
         </div>

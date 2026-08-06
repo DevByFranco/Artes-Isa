@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { useCartStore } from "@/store/cartStore";
 
 interface Product {
   id: string;
@@ -13,6 +15,23 @@ interface Product {
 }
 
 export default function PublicProductCard({ product }: { product: Product }) {
+  const addItem = useCartStore((state) => state.addItem);
+  
+  // Nuevo estado para controlar la animación del botón
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    addItem(product);
+    
+    // Cambiamos el estado para mostrar el mensaje de éxito
+    setIsAdded(true);
+    
+    // Lo regresamos a la normalidad después de 2 segundos (2000 milisegundos)
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+  };
+
   return (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col border border-gray-100">
       
@@ -49,11 +68,15 @@ export default function PublicProductCard({ product }: { product: Product }) {
           <span className="text-[#C6A664] font-bold text-xl">${product.price}</span>
           
           <button 
-            onClick={() => alert(`Añadido ${product.name} al carrito (¡Lógica pronto!)`)}
-            disabled={product.stock <= 0}
-            className="px-4 py-2 bg-[#8A9A86] text-white text-sm font-medium rounded-lg hover:bg-[#748371] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+            onClick={handleAddToCart}
+            disabled={product.stock <= 0 || isAdded}
+            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors disabled:cursor-not-allowed ${
+              isAdded 
+                ? "bg-green-600 text-white disabled:bg-green-600" 
+                : "bg-[#8A9A86] text-white hover:bg-[#748371] disabled:bg-gray-300"
+            }`}
           >
-            {product.stock > 0 ? "Añadir" : "Agotado"}
+            {isAdded ? "¡Añadido! ✓" : product.stock > 0 ? "Añadir" : "Agotado"}
           </button>
         </div>
       </div>
