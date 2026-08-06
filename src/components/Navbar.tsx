@@ -33,7 +33,7 @@ export default function Navbar() {
           
           <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105">
             <Image 
-              src="/logo.png" 
+              src="/Logo.png" 
               alt="Artes Isa Logo" 
               width={45} 
               height={45}
