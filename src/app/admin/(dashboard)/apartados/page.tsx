@@ -1,10 +1,9 @@
 export const dynamic = "force-dynamic";
 
-import { prisma } from "@/lib/prisma"; // Ajusta esta ruta si tu cliente Prisma está en @/lib/prisma
+import { prisma } from "@/lib/prisma"; 
 import Link from "next/link";
 
 export default async function ApartadosPage() {
-  // Traemos todos los apartados ordenados por fecha, incluyendo la info del cliente, producto y pagos
   const layaways = await prisma.layaway.findMany({
     include: {
       customer: true,
@@ -17,16 +16,16 @@ export default async function ApartadosPage() {
   return (
     <div className="space-y-6">
       {/* Encabezado */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Sistema de Apartados</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800">Sistema de Apartados</h1>
           <p className="text-sm text-gray-500 mt-1">
             Gestiona los productos separados por tus clientes.
           </p>
         </div>
         <Link
           href="/admin/apartados/nuevo"
-          className="bg-[#8A9A86] hover:bg-[#748371] text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-sm"
+          className="bg-[#8A9A86] hover:bg-[#748371] text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-sm w-full sm:w-auto text-center"
         >
           + Nuevo Apartado
         </Link>
@@ -43,8 +42,9 @@ export default async function ApartadosPage() {
             <p className="text-sm mt-1">Crea tu primer apartado para empezar a llevar el control.</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+          <div className="overflow-x-auto pb-2">
+            {/* AQUÍ ESTÁ LA MAGIA: min-w-[800px] evita que la tabla se aplaste */}
+            <table className="w-full min-w-200 text-left border-collapse">
               <thead>
                 <tr className="bg-gray-50 text-gray-600 text-sm border-b border-gray-100">
                   <th className="p-4 font-medium">Cliente</th>
@@ -58,7 +58,6 @@ export default async function ApartadosPage() {
               </thead>
               <tbody className="divide-y divide-gray-100 text-sm">
                 {layaways.map((layaway) => {
-                  // Calculamos cuánto han abonado sumando todos sus pagos
                   const totalPaid = layaway.payments.reduce((sum, payment) => sum + payment.amount, 0);
                   const remaining = layaway.totalPrice - totalPaid;
 
@@ -84,7 +83,7 @@ export default async function ApartadosPage() {
                       <td className="p-4 text-right">
                         <Link 
                           href={`/admin/apartados/${layaway.id}`}
-                          className="text-[#8A9A86] hover:text-[#C6A664] font-medium transition-colors"
+                          className="text-[#8A9A86] hover:text-[#C6A664] font-medium transition-colors whitespace-nowrap"
                         >
                           Ver detalles
                         </Link>
