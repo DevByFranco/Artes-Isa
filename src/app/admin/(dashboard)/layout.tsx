@@ -38,9 +38,6 @@ export default function DashboardLayout({
           <Link href="/admin/products" className="p-2.5 hover:bg-isa-cream hover:text-isa-green rounded-md text-gray-700 font-medium transition-colors">
             Productos
           </Link>
-          <Link href="/admin/usuarios" className="p-2.5 hover:bg-isa-cream hover:text-isa-green rounded-md text-gray-700 font-medium transition-colors">
-            Usuarios
-          </Link>
         </nav>
       </aside>
 
