@@ -81,6 +81,13 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-md flex flex-col py-4 px-6 gap-4 font-medium text-gray-600 animate-fade-in">
             <Link 
+              href="/" 
+              onClick={() => setIsMobileMenuOpen(false)} 
+              className="hover:text-[#C6A664] transition-colors"
+            >
+              Inicio
+            </Link>
+            <Link 
               href="/#categorias" 
               onClick={() => setIsMobileMenuOpen(false)} 
               className="hover:text-[#C6A664] transition-colors"
