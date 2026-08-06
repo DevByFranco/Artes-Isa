@@ -11,7 +11,7 @@ interface CartModalProps {
 export default function CartModal({ isOpen, onClose }: CartModalProps) {
   const { items, updateQuantity, cartTotal } = useCartStore();
 
-  const WHATSAPP_NUMBER = "573000000000"; // Asegúrate de poner tu número
+  const WHATSAPP_NUMBER = "573122737377"; // Asegúrate de poner tu número
 
   const handleCheckoutWhatsApp = () => {
     if (items.length === 0) return;
