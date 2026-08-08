@@ -12,3 +12,13 @@ body {
   background-color: var(--color-isa-cream);
   color: var(--color-isa-dark);
 }
+
+/* Ocultar la barra de desplazamiento (Scrollbar) en contenedores deslizables */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari y Chrome */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* Internet Explorer y Edge */
+  scrollbar-width: none;  /* Firefox */
+}
