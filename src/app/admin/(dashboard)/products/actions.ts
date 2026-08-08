@@ -12,6 +12,10 @@ export async function createProduct(formData: FormData) {
     const price = parseFloat(formData.get("price") as string);
     const stock = parseInt(formData.get("stock") as string);
     const category = formData.get("category") as string;
+    
+    // CORRECCIÓN 1: Capturamos la subcategoría (puede ser string o null)
+    const subcategory = formData.get("subcategory") as string | null; 
+    
     const file = formData.get("image") as File;
 
     if (!name || !price || !file.size) {
@@ -27,6 +31,7 @@ export async function createProduct(formData: FormData) {
         price,
         stock,
         category,
+        subcategory, // CORRECCIÓN 2: Ahora sí lo guardamos en la base de datos
         images: [imageUrl],
       },
     });
@@ -55,6 +60,7 @@ export async function updateProduct(formData: FormData) {
     const id = formData.get("id") as string;
     const name = formData.get("name") as string;
     const category = formData.get("category") as string;
+    const subcategory = formData.get("subcategory") as string | null; 
     const description = formData.get("description") as string;
     const price = parseFloat(formData.get("price") as string);
     const stock = parseInt(formData.get("stock") as string);
@@ -64,6 +70,7 @@ export async function updateProduct(formData: FormData) {
       data: {
         name,
         category,
+        subcategory,
         description,
         price,
         stock,

@@ -5,12 +5,12 @@ import PublicProductCard from "@/components/PublicProductCard";
 import Link from "next/link";
 import Image from "next/image"; // IMPORTANTE: Añadimos el componente Image de Next.js
 
-// Arreglo con la información de tus categorías para mapearlas fácilmente
+// Arreglo con la información de tus 4 categorías principales
 const categoriesData = [
   { id: "1", name: "Bolsos", href: "/categoria/Bolsos", image: "/categories/bolso(ejemplo).jpg" },
-  { id: "2", name: "Bolsas de mano", href: "/categoria/Bolsas de mano", image: "/categories/bolsomano(ejemplo).jpg" },
-  { id: "3", name: "Monederos", href: "/categoria/Monederos", image: "/categories/monedero(ejemplo).jpg" },
-  { id: "4", name: "Correas", href: "/categoria/Correas", image: "/categories/correas(ejemplo).jpg" },
+  { id: "2", name: "Monederos", href: "/categoria/Monederos", image: "/categories/monedero(ejemplo).jpg" },
+  { id: "3", name: "Correas", href: "/categoria/Correas", image: "/categories/correas(ejemplo).jpg" },
+  { id: "4", name: "Carteras", href: "/categoria/Carteras", image: "/categories/bolsomano(ejemplo).jpg" }, // Mantuve el nombre de tu imagen
 ];
 
 export default async function HomePage() {
@@ -40,7 +40,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. SECCIÓN COMPRAR POR CATEGORÍAS (Ahora con Imágenes de Fondo) */}
+      {/* 2. SECCIÓN COMPRAR POR CATEGORÍAS */}
       <section id="categorias" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24">
         <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Comprar por Categorías</h2>
         
@@ -51,7 +51,6 @@ export default async function HomePage() {
               href={cat.href} 
               className="group relative h-48 sm:h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center bg-gray-100"
             >
-              {/* Imagen de fondo con efecto zoom */}
               <Image
                 src={cat.image}
                 alt={`Categoría de ${cat.name}`}
@@ -60,10 +59,8 @@ export default async function HomePage() {
                 className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out z-0"
               />
               
-              {/* Capa oscura superpuesta para que el texto siempre se lea */}
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 z-10" />
               
-              {/* Texto centrado */}
               <span className="relative z-20 text-white font-bold text-xl tracking-wide text-center px-2 drop-shadow-md">
                 {cat.name}
               </span>
@@ -72,7 +69,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 3. SECCIÓN DEL CATÁLOGO (Usando tu PublicProductCard) */}
+      {/* 3. SECCIÓN DEL CATÁLOGO */}
       <section id="catalogo" className="max-w-7xl mx-auto px-6 py-16 scroll-mt-24">
         
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mb-10 border-b border-gray-100 pb-4">
