@@ -16,6 +16,10 @@ interface Product {
 
 export default function ProductCard({ product }: { product: Product }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  
+  // Nuevo estado para controlar el modal de confirmación de eliminación
+  const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
 
   return (
     <>
@@ -49,7 +53,6 @@ export default function ProductCard({ product }: { product: Product }) {
             
             <h4 className="font-semibold text-isa-rosa-1 text-base leading-tight pr-14">{product.name}</h4>
             
-            {/* Descripción elegante siempre visible */}
             <p className="text-xs text-isa-dark line-clamp-2 mt-1.5 leading-relaxed italic bg-gray-50/60 p-1.5 rounded border border-gray-100/80">
               {product.description || "Sin descripción disponible."}
             </p>
@@ -61,7 +64,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
 
-        {/* Botones de Acción (Visibles por defecto para evitar fallos de interacción) */}
+        {/* Botones de Acción */}
         <div className="absolute top-3 right-3 flex gap-1 bg-white/90 backdrop-blur-sm p-1 rounded-lg border border-gray-100 shadow-sm z-10">
           <button 
             type="button"
@@ -74,28 +77,91 @@ export default function ProductCard({ product }: { product: Product }) {
             </svg>
           </button>
           
-          <form action={async () => {
-            if (confirm(`¿Estás seguro de eliminar "${product.name}"?`)) {
-              // Manejamos la respuesta de la acción y mostramos la alerta si hay error
-              const result = await deleteProduct(product.id);
-              if (result?.error) {
-                alert(result.error);
-              }
-            }
-          }}>
-            <button 
-              type="submit" 
-              className="p-1.5 text-red-600 bg-red-50 hover:bg-red-100 rounded-md transition-colors" 
-              title="Eliminar Producto"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-            </button>
-          </form>
+          {/* En lugar de usar form directamente, abrimos el modal moderno */}
+          <button 
+            type="button" 
+            onClick={() => setIsConfirmingDelete(true)}
+            className="p-1.5 text-red-600 bg-red-50 hover:bg-red-100 rounded-md transition-colors" 
+            title="Eliminar Producto"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+          </button>
         </div>
-
       </div>
+
+      {/* 🛑 Modal de Confirmación de Eliminación Moderno */}
+      {isConfirmingDelete && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4 transition-all">
+          <div className="bg-isa-rosa-1 text-white rounded-xl shadow-2xl w-full max-w-sm p-6 relative border border-white/20">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-white/20 rounded-full shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold">¿Eliminar producto?</h3>
+            </div>
+            
+            <p className="text-sm text-white/90 mb-6 leading-relaxed">
+              ¿Estás seguro de que deseas eliminar <span className="font-bold underline decoration-white/50">{product.name}</span>? Esta acción no se puede deshacer.
+            </p>
+            
+            <div className="flex justify-end gap-3">
+              <button 
+                type="button" 
+                onClick={() => setIsConfirmingDelete(false)}
+                className="px-4 py-2 text-sm font-medium bg-white/10 hover:bg-white/20 rounded-md transition-colors"
+              >
+                Cancelar
+              </button>
+              
+              <form action={async () => {
+                // Primero cerramos este modal
+                setIsConfirmingDelete(false);
+                // Luego ejecutamos la acción
+                const result = await deleteProduct(product.id);
+                if (result?.error) {
+                  setErrorMessage(result.error);
+                  setTimeout(() => {
+                    setErrorMessage(null);
+                  }, 6000);
+                }
+              }}>
+                <button 
+                  type="submit" 
+                  className="px-4 py-2 text-sm font-medium bg-white text-isa-rosa-1 hover:bg-gray-100 rounded-md transition-colors shadow-sm"
+                >
+                  Sí, eliminar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Alerta Moderna Flotante (Toast) para Errores (Ej: Vinculado a Apartados) */}
+      {errorMessage && (
+        <div className="fixed bottom-5 right-5 z-[100] bg-isa-rosa-1 text-white px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3 max-w-sm border border-white/20 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <div className="flex-1">
+            <h4 className="font-bold text-sm mb-1">¡No se puede eliminar!</h4>
+            <p className="text-xs leading-relaxed text-white/90">{errorMessage}</p>
+          </div>
+          <button 
+            onClick={() => setErrorMessage(null)}
+            className="p-1 hover:bg-white/20 rounded-lg transition-colors shrink-0"
+            title="Cerrar"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       {/* Modal para Editar */}
       {isEditing && (
