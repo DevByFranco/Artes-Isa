@@ -11,7 +11,7 @@ export default function LoginPage() {
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-isa-cream">
+    <div className="min-h-screen flex items-center justify-center bg-isa-beige-4">
       <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 w-full max-w-md">
         
         <h1 className="text-2xl font-bold text-center mb-6 text-isa-dark">
@@ -20,27 +20,27 @@ export default function LoginPage() {
         
         <form action={formAction} className="flex flex-col gap-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-isa-dark mb-1">
               Correo Electrónico
             </label>
             <input 
               type="email" 
               name="email"
               required
-              className="w-full border border-gray-300 rounded-md p-2.5 outline-none focus:ring-2 focus:ring-isa-gold focus:border-transparent transition-all"
+              className="w-full border border-gray-300 rounded-md p-2.5 outline-none focus:ring-2 focus:ring-isa-gold focus:border-transparent transition-all bg-isa-beige-4"
               placeholder="admin@artesisa.com"
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-isa-dark mb-1">
               Contraseña
             </label>
             <input 
               type="password" 
               name="password"
               required
-              className="w-full border border-gray-300 rounded-md p-2.5 outline-none focus:ring-2 focus:ring-isa-gold focus:border-transparent transition-all"
+              className="w-full border border-gray-300 rounded-md p-2.5 outline-none focus:ring-2 focus:ring-isa-gold focus:border-transparent transition-all bg-isa-beige-4"
               placeholder="••••••••"
             />
           </div>
@@ -55,7 +55,7 @@ export default function LoginPage() {
           <button 
             type="submit" 
             disabled={isPending}
-            className="w-full bg-isa-dark text-white font-medium py-2.5 rounded-md hover:bg-black transition-colors mt-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-isa-soft-rosa-2 text-white font-medium py-2.5 rounded-md hover:bg-isa-rosa-1 transition-colors mt-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {isPending ? "Iniciando sesión..." : "Iniciar Sesión"}
           </button>

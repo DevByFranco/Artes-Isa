@@ -11,7 +11,7 @@ export default function ProductForm() {
     <form action={createProduct} className="flex flex-col gap-4">
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">Nombre del producto</label>
-        <input type="text" name="name" required className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none" placeholder="Ej. Bolso Tote Clásico" />
+        <input type="text" name="name" required className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none bg-isa-beige-4" placeholder="Ej. Bolso Tote Clásico" />
       </div>
 
       <div className="flex gap-4">
@@ -23,7 +23,7 @@ export default function ProductForm() {
             required 
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none bg-white"
+            className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none bg-isa-beige-4"
           >
             <option value="">Selecciona...</option>
             <option value="Bolsos">Bolsos</option>
@@ -51,26 +51,26 @@ export default function ProductForm() {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
-        <textarea name="description" rows={3} required className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none" placeholder="Detalles de cuero, medidas, etc."></textarea>
+        <textarea name="description" rows={3} required className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none bg-isa-beige-4" placeholder="Detalles de cuero, medidas, etc."></textarea>
       </div>
 
       <div className="flex gap-4">
         <div className="flex-1">
           <label className="block text-sm font-medium text-gray-700 mb-1">Precio ($)</label>
-          <input type="number" name="price" required min="0" step="0.01" className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none" placeholder="0.00" />
+          <input type="number" name="price" required min="0" step="0.01" className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none bg-isa-beige-4" placeholder="0.00 " />
         </div>
         <div className="flex-1">
           <label className="block text-sm font-medium text-gray-700 mb-1">Stock</label>
-          <input type="number" name="stock" required min="0" defaultValue="1" className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none" />
+          <input type="number" name="stock" required min="0" defaultValue="1" className="w-full border border-gray-300 rounded-md p-2 focus:ring-[#C6A664] focus:border-[#C6A664] outline-none bg-isa-beige-4" />
         </div>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">Imagen del Producto</label>
-        <input type="file" name="image" accept="image/*" required className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#8A9A86] file:text-white hover:file:bg-[#748371] cursor-pointer" />
+        <input type="file" name="image" accept="image/*" required className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#8A9A86] file:text-white hover:file:bg-[#748371] cursor-pointer " />
       </div>
 
-      <button type="submit" className="mt-4 w-full bg-[#C6A664] text-white py-2 px-4 rounded-md hover:bg-[#b09255] transition-colors font-medium shadow-sm">
+      <button type="submit" className="mt-4 w-full bg-isa-rosa-1 text-white py-2 px-4 rounded-md hover:bg-[#b09255] transition-colors font-medium shadow-sm">
         Guardar Producto
       </button>
     </form>

@@ -93,7 +93,7 @@ export default async function DetalleApartadoPage({ params }: { params: Promise<
         {/* Columna Derecha */}
         <div className="space-y-6">
           
-          <div className="bg-[#8A9A86]/10 p-6 rounded-xl border border-[#8A9A86]/20">
+          <div className="bg-white p-6 rounded-xl border border-[#8A9A86]/20">
             <h2 className="text-lg font-bold text-gray-800 mb-4">Resumen de Cuenta</h2>
             <div className="space-y-3">
               <div className="flex justify-between text-gray-600">

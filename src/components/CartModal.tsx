@@ -44,7 +44,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
       <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-slide-in-right">
         
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-gray-800">Tu Carrito</h2>
+          <h2 className="text-xl font-bold text-isa-rosa-1">Tu Carrito</h2>
           <button 
             onClick={onClose}
             className="p-2 text-gray-400 hover:text-gray-800 transition-colors rounded-full hover:bg-gray-100"
@@ -81,11 +81,11 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                   <div className="flex-1 flex flex-col justify-between h-20">
                     {/* Eliminamos el basurero suelto de aquí arriba */}
                     <div className="flex justify-between items-start gap-2">
-                      <h3 className="text-sm font-medium text-gray-800 line-clamp-2">{item.product.name}</h3>
+                      <h3 className="text-sm font-medium text-isa-rosa-1 line-clamp-2">{item.product.name}</h3>
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-[#C6A664]">
+                      <span className="font-bold text-isa-beige-">
                         ${(item.product.price * item.quantity).toLocaleString("es-CO")}
                       </span>
 
@@ -135,7 +135,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
             </div>
             <button 
               onClick={handleCheckoutWhatsApp}
-              className="w-full bg-[#8A9A86] text-white py-4 rounded-xl font-medium hover:bg-[#748371] transition-colors shadow-sm"
+              className="w-full bg-isa-rosa-1 text-white py-4 rounded-xl font-medium hover:bg-isa-soft-rosa-2 transition-colors shadow-sm"
             >
               Proceder al pago
             </button>

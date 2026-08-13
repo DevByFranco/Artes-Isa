@@ -33,7 +33,7 @@ export default function PublicProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col border border-gray-100">
+    <div className="group bg-isa-rosa-1 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col border border-isa-rosa-1">
       
       {/* Imagen del Producto */}
       <div className="relative w-full aspect-square overflow-hidden bg-gray-50">
@@ -54,26 +54,26 @@ export default function PublicProductCard({ product }: { product: Product }) {
       {/* Información para el cliente */}
       <div className="p-5 flex flex-col flex-1">
         <div className="mb-2">
-          <span className="text-[10px] font-bold tracking-widest text-[#8A9A86] uppercase">
+          <span className="text-[10px] font-bold tracking-widest text-isa-almond-3 uppercase">
             {product.category}
           </span>
         </div>
-        <h3 className="font-semibold text-gray-800 text-lg mb-1 line-clamp-1">{product.name}</h3>
-        <p className="text-sm text-gray-500 line-clamp-2 mb-4 flex-1 italic">
+        <h3 className="font-semibold text-isa-beige-4 text-lg mb-1 line-clamp-1">{product.name}</h3>
+        <p className="text-sm text-white line-clamp-2 mb-4 flex-1 italic">
           {product.description || "Un hermoso diseño de Artes Isa."}
         </p>
         
         {/* Precio y Botón de Añadir */}
         <div className="flex items-center justify-between mt-auto">
-          <span className="text-[#C6A664] font-bold text-xl">${product.price}</span>
+          <span className="text-isa-beige-4 font-bold text-xl">${product.price}</span>
           
           <button 
             onClick={handleAddToCart}
             disabled={product.stock <= 0 || isAdded}
             className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors disabled:cursor-not-allowed ${
               isAdded 
-                ? "bg-green-600 text-white disabled:bg-green-600" 
-                : "bg-[#8A9A86] text-white hover:bg-[#748371] disabled:bg-gray-300"
+                ? "bg-isa-rosa-1 text-isa-beige-4 disabled:bg-isa-almond-3" 
+                : "bg-isa-beige-4 text-isa-rosa-1 hover:bg-isa-almond-3 disabled:bg-gray-300"
             }`}
           >
             {isAdded ? "¡Añadido! ✓" : product.stock > 0 ? "Añadir" : "Agotado"}

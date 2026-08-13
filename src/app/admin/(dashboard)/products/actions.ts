@@ -49,8 +49,23 @@ export async function deleteProduct(id: string) {
       where: { id },
     });
     revalidatePath("/admin/products");
-  } catch (error) {
+    return { success: true };
+    
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    // Subimos el console.error antes de los return para que sí se ejecute en los logs del servidor
     console.error("Error al eliminar producto:", error);
+
+    // Revisamos tanto layaway minúscula como Mayúscula (como viene en el error de Prisma)
+    if (error?.message?.toLowerCase().includes('layaway')) {
+      return {
+        error: "🚫 No puedes eliminar este producto porque está vinculado a uno o más apartados. Debes eliminar o completar el apartado primero."
+      };
+    }
+    
+    return {
+      error: "Ocurrió un error al eliminar el producto. Por favor, inténtalo de nuevo más tarde."
+    };
   }
 }
 

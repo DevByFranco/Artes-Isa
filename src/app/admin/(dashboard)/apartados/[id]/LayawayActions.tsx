@@ -30,7 +30,7 @@ export default function LayawayActions({ layaway, remaining }: Props) {
   // Generador del Recibo en PDF Profesional
   const generatePDF = () => {
     const doc = new jsPDF();
-    const primaryColor: [number, number, number] = [138, 154, 134]; // Verde Olivo (#8A9A86)
+    const primaryColor: [number, number, number] = [226, 156, 156]; 
 
     // --- 1. ENCABEZADO CON BLOQUE DE COLOR Y DATOS DE LA EMPRESA ---
     doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
@@ -136,7 +136,8 @@ export default function LayawayActions({ layaway, remaining }: Props) {
     doc.setFontSize(11);
     doc.setFont("helvetica", "bold");
     if (remaining <= 0) {
-      doc.setTextColor(34, 197, 94); // Verde
+      // AQUÍ SE CAMBIÓ EL COLOR DE VERDE A ROSA (#E29C9C -> 226, 156, 156)
+      doc.setTextColor(226, 156, 156); 
       doc.text("¡PAGADO EN TOTALIDAD!", labelX, finalY + 30);
     } else {
       doc.setTextColor(239, 68, 68); // Rojo
@@ -186,7 +187,7 @@ export default function LayawayActions({ layaway, remaining }: Props) {
         {remaining > 0 && (
           <button
             onClick={() => setIsOpen(true)}
-            className="flex-1 sm:flex-none bg-[#8A9A86] hover:bg-[#748371] text-white px-4 py-2.5 rounded-lg font-medium transition-colors shadow-sm"
+            className="flex-1 sm:flex-none bg-isa-rosa-1 hover:bg-isa-rosa-1 text-white px-4 py-2.5 rounded-lg font-medium transition-colors shadow-sm"
           >
             + Nuevo Abono
           </button>
