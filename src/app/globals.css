@@ -2,14 +2,15 @@
 @source "../**/*.{ts,tsx}";
 
 @theme {
-  --color-isa-cream: #FAF9F6;
-  --color-isa-green: #8F9E8B;
-  --color-isa-gold: #F2C792;
+  --color-isa-rosa-1: #E29C9C;
+  --color-isa-soft-rosa-2: #E6BEAE;
+  --color-isa-almond-3: #EEDAC5;
+  --color-isa-beige-4: #F5F5DC;
   --color-isa-dark: #2C2C2C;
 }
 
 body {
-  background-color: var(--color-isa-cream);
+  background-color: var(--color-isa-beige);
   color: var(--color-isa-dark);
 }
 

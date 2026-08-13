@@ -9,13 +9,13 @@ export default async function ProductsPage() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold text-gray-800 mb-8">Gestión de Productos</h2>
+      <h2 className="text-3xl font-bold text-isa-rosa-1 mb-8">Gestión de Productos</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Columna Izquierda: Formulario (Ahora usando el Componente) */}
         <div className="md:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-fit">
-          <h3 className="text-xl font-semibold mb-4 text-[#8A9A86]">Añadir Nuevo Producto</h3>
+          <h3 className="text-xl font-semibold mb-4 text-isa-rosa-1">Añadir Nuevo Producto</h3>
           
           {/* Aquí llamamos al formulario que creamos en el otro archivo */}
           <ProductForm />
@@ -24,7 +24,7 @@ export default async function ProductsPage() {
 
         {/* Columna Derecha: Lista con el componente ProductCard */}
         <div className="md:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-fit">
-          <h3 className="text-xl font-semibold mb-4 text-[#8A9A86]">Catálogo Actual</h3>
+          <h3 className="text-xl font-semibold mb-4 text-isa-rosa-1">Catálogo Actual</h3>
           
           {products.length === 0 ? (
             <div className="text-center text-gray-500 py-10 bg-gray-50 rounded-lg border border-dashed border-gray-300">

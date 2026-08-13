@@ -25,7 +25,7 @@ export default async function ApartadosPage() {
         </div>
         <Link
           href="/admin/apartados/nuevo"
-          className="bg-[#8A9A86] hover:bg-[#748371] text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-sm w-full sm:w-auto text-center"
+          className="bg-isa-rosa-1 hover:bg-isa-soft-rosa-2 text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-sm w-full sm:w-auto text-center"
         >
           + Nuevo Apartado
         </Link>
@@ -83,7 +83,7 @@ export default async function ApartadosPage() {
                       <td className="p-4 text-right">
                         <Link 
                           href={`/admin/apartados/${layaway.id}`}
-                          className="text-[#8A9A86] hover:text-[#C6A664] font-medium transition-colors whitespace-nowrap"
+                          className="text-isa-rosa-1 hover:text-isa-dark font-medium transition-colors whitespace-nowrap"
                         >
                           Ver detalles
                         </Link>

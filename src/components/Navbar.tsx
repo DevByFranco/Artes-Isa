@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+      <nav className="bg-isa-almond-3 border-b border-isa-almond-3 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           
           <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105">
@@ -39,25 +39,27 @@ export default function Navbar() {
               height={45}
               className="rounded-lg"
             />
-            <span className="font-bold text-xl text-[#8A9A86] tracking-wide hidden sm:block">
+            <span className="font-bold text-xl text-white tracking-wide hidden sm:block hover:text-isa-rosa-1">
               Artes Isa
             </span>
           </Link>
 
           {/* Menú para Computadoras (Desktop) */}
-          <div className="hidden md:flex items-center gap-8 font-medium text-gray-600">
+          <div className="hidden md:flex items-center gap-8 font-medium text-white">
             {/* Arreglamos el enlace para que apunte a la sección de categorías */}
-            <Link href="/#categorias" className="hover:text-[#C6A664] transition-colors">Categorías</Link>
-            <Link href="/sobre-nosotros" className="hover:text-[#C6A664] transition-colors">Sobre Nosotros</Link>
+
+            <Link href="/" className="hover:text-isa-rosa-1 transition-colors">Inicio</Link>
+            <Link href="/#categorias" className="hover:text-isa-rosa-1 transition-colors">Categorías</Link>
+            <Link href="/sobre-nosotros" className="hover:text-isa-rosa-1 transition-colors">Sobre Nosotros</Link>
           </div>
 
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2 text-gray-600 hover:text-[#8A9A86] transition-colors flex items-center gap-2 group"
+              className="relative p-2 text-white hover:text-isa-rosa-1 transition-colors flex items-center gap-2 group"
             >
-              <span className="hidden sm:block text-sm font-medium group-hover:text-[#8A9A86]">Carrito</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <span className="hidden sm:block text-sm font-medium group-hover:text-isa-rosa-1">Carrito</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 hover:text-isa-rosa-1">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
               </svg>
               <span className="absolute top-0 right-0 bg-[#C6A664] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center translate-x-1 -translate-y-1">
