@@ -17,7 +17,7 @@ export default function AboutPage() {
 
       {/* Sección de Historia y Misión */}
       <section className="py-12 px-4 md:px-8 max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+        <div className="grid md:grid-cols-2 gap-12 items-center bg-isa-almond-3 p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100">
           
           <div className="relative h-80 md:h-full min-h-75 w-full rounded-xl overflow-hidden shadow-sm">
             <Image 
@@ -46,7 +46,7 @@ export default function AboutPage() {
             <div className="pt-4">
               <Link 
                 href="/" 
-                className="inline-block bg-isa-dark text-white px-6 py-3 rounded-lg font-medium hover:bg-black transition-colors"
+                className="inline-block bg-isa-rosa-1 text-white px-6 py-3 rounded-lg font-medium hover:bg-black transition-colors"
               >
                 Ver Catálogo
               </Link>
