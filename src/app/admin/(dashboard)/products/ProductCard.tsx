@@ -93,7 +93,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* 🛑 Modal de Confirmación de Eliminación Moderno */}
       {isConfirmingDelete && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4 transition-all">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-60 flex items-center justify-center p-4 transition-all">
           <div className="bg-isa-rosa-1 text-white rounded-xl shadow-2xl w-full max-w-sm p-6 relative border border-white/20">
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 bg-white/20 rounded-full shrink-0">
@@ -143,7 +143,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Alerta Moderna Flotante (Toast) para Errores (Ej: Vinculado a Apartados) */}
       {errorMessage && (
-        <div className="fixed bottom-5 right-5 z-[100] bg-isa-rosa-1 text-white px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3 max-w-sm border border-white/20 transition-all">
+        <div className="fixed bottom-5 right-5 z-100 bg-isa-rosa-1 text-white px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3 max-w-sm border border-white/20 transition-all">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>

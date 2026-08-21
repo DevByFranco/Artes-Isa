@@ -19,7 +19,7 @@ export default async function HomePage() {
 
   return (
     /* FONDO PREDOMINANTE: Rosa claro (Dogwood) */
-    <main className="min-h-screen bg-isa-soft-rosa-2">
+    <main className="min-h-screen bg-isa-almond-3">
       
       {/* 1. SECCIÓN HERO (Banner principal) - Rosa fuerte (Salmon) para dar impacto */}
       <section className="bg-isa-rosa-1 py-16 sm:py-24 px-6">
@@ -41,7 +41,7 @@ export default async function HomePage() {
       </section>
 
       {/* 2. SECCIÓN COMPRAR POR CATEGORÍAS */}
-      <section id="categorias" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24 bg-almond-3">
+      <section id="categorias" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24 bg-isa-almond-3">
         <h2 className="text-2xl font-bold text-white mb-8 text-center">Comprar por Categorías</h2>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
@@ -50,7 +50,7 @@ export default async function HomePage() {
               key={cat.id} 
               href={cat.href} 
               /* SECUNDARIO: Fondo Almond para las tarjetas antes de que cargue la imagen */
-              className="group relative h-48 sm:h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center bg-isa-soft-rosa-2"
+              className="group relative h-48 sm:h-64 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center bg-isa-almond-3"
             >
               <Image
                 src={cat.image}
@@ -80,7 +80,7 @@ export default async function HomePage() {
         
         {products.length === 0 ? (
           /* SECUNDARIO: Fondo Almond para alertas/mensajes secundarios */
-          <div className="text-center py-20 bg-isa-almond/50 rounded-2xl border border-isa-almond shadow-sm">
+          <div className="text-center py-20 bg-isa-almond-3/50 rounded-2xl border border-isa-almond-3 shadow-sm">
             <p className="text-gray-700 text-lg">Aún no hay productos disponibles. ¡Vuelve pronto!</p>
           </div>
         ) : (
